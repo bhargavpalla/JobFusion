@@ -1,5 +1,6 @@
 package com.example.jobfusion.ui.splash
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,8 +26,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import com.example.jobfusion.ui.theme.JobFusionTheme
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun SplashScreen(modifier: Modifier = Modifier) {
     BoxWithConstraints(
@@ -40,6 +45,7 @@ fun SplashScreen(modifier: Modifier = Modifier) {
                     )
                 )
             )
+            .windowInsetsPadding(WindowInsets.safeDrawing)
             .padding(horizontal = 24.dp, vertical = 28.dp)
     ) {
         val headingStyle = if (maxWidth < 360.dp) {

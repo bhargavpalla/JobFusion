@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.JobFusion" parent="android:Theme.Material.Light.NoActionBar"/>
+
+    <style name="Theme.JobFusion.Launch" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@drawable/launch_splash_background</item>
+        <item name="windowSplashScreenBackground">@color/splash_bg_start</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon_transparent</item>
+        <item name="windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
+        <item name="postSplashScreenTheme">@style/Theme.JobFusion</item>
+    </style>
 </resources>
