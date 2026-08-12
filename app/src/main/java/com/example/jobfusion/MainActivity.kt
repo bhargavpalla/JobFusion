@@ -15,7 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.jobfusion.domain.auth.model.UserRole
+import com.example.domain.auth.model.UserRole
 import com.example.jobfusion.jobseeker.JobSeekerActivity
 import com.example.jobfusion.recruiter.RecruiterActivity
 import com.example.jobfusion.ui.about.AboutScreen
@@ -26,7 +26,7 @@ import com.example.jobfusion.ui.theme.JobFusionTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-
+//tic ta
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -36,6 +36,7 @@ class MainActivity : ComponentActivity() {
             JobFusionTheme {
                // CountDownTimer()
                 JobFusionApp(modifier = Modifier.fillMaxSize())
+                //TicTacToeScreen(3)
             }
         }
     }

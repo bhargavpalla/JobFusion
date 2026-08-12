@@ -3,15 +3,15 @@ package com.example.jobfusion.ui.auth
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.jobfusion.core.network.NetworkResponse
-import com.example.jobfusion.domain.auth.model.SalaryType
-import com.example.jobfusion.domain.auth.model.SignupRequest
-import com.example.jobfusion.domain.auth.model.UserRole
-import com.example.jobfusion.domain.auth.repository.AuthRepository
-import com.example.jobfusion.domain.auth.repository.AuthTokenRepository
-import com.example.jobfusion.domain.auth.usecase.LoginUseCase
-import com.example.jobfusion.domain.auth.usecase.SignupUseCase
-import com.example.jobfusion.domain.auth.validation.AuthValidator
+import com.example.domain.auth.OutCome
+import com.example.domain.auth.model.SignupRequest
+import com.example.domain.auth.model.UserRole
+import com.example.domain.auth.repository.AuthRepository
+import com.example.domain.auth.repository.AuthTokenRepository
+import com.example.domain.auth.usecase.LoginUseCase
+import com.example.domain.auth.usecase.SignupUseCase
+import com.example.domain.auth.validation.AuthField
+import com.example.domain.auth.validation.AuthValidator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -131,8 +131,7 @@ class AuthViewModel(
         viewModelScope.launch {
             updateState { copy(isLoading = true, fieldErrors = emptyMap(), errorMessage = null, successMessage = null) }
             when (val response = loginUseCase(email = state.email.trim(), password = state.password)) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success -> {
+                is OutCome.Success -> {
                     val loggedInRole = resolveLoginRole(state.email)
                     authTokenRepository.saveSession(
                         accessToken = response.data.accessToken,
@@ -147,7 +146,7 @@ class AuthViewModel(
                         )
                     }
                 }
-                is NetworkResponse.Error -> {
+                is OutCome.Error -> {
                     updateState {
                         copy(
                             isLoading = false,
@@ -205,8 +204,7 @@ class AuthViewModel(
         viewModelScope.launch {
             updateState { copy(isLoading = true, fieldErrors = emptyMap(), errorMessage = null, successMessage = null) }
             when (val response = signupUseCase(request)) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success -> {
+                is OutCome.Success<*> -> {
                     authTokenRepository.saveSession(
                         accessToken = localSignupSessionToken(request.email),
                         role = state.selectedRole
@@ -220,7 +218,7 @@ class AuthViewModel(
                         )
                     }
                 }
-                is NetworkResponse.Error -> {
+                is OutCome.Error -> {
                     updateState {
                         copy(
                             isLoading = false,

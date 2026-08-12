@@ -3,9 +3,8 @@ package com.example.jobfusion.recruiter.ui.dashboard
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.jobfusion.core.network.NetworkResponse
-import com.example.jobfusion.recruiter.domain.model.RecruiterControls
-import com.example.jobfusion.recruiter.domain.repository.RecruiterDashboardRepository
+import com.example.domain.auth.OutCome
+import com.example.domain.auth.model.RecruiterDashboardRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -59,8 +58,7 @@ class RecruiterDashboardViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, errorMessage = null) }
             when (val response = repository.getDashboardData()) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success -> {
+                is OutCome.Success -> {
                     val data = response.data
                     _uiState.update {
                         it.copy(
@@ -72,7 +70,7 @@ class RecruiterDashboardViewModel(
                         )
                     }
                 }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             isLoading = false,
@@ -88,8 +86,7 @@ class RecruiterDashboardViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isRunningRanking = true, errorMessage = null) }
             when (val response = repository.runRanking(controls)) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success ->
+                is OutCome.Success ->
                     _uiState.update {
                         it.copy(
                             isRunningRanking = false,
@@ -97,7 +94,7 @@ class RecruiterDashboardViewModel(
                             selectedCandidate = null
                         )
                     }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             isRunningRanking = false,

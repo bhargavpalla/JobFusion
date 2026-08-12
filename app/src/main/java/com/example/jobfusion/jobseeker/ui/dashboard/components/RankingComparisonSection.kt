@@ -24,9 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.data.jobseeker.dummy.RankingComparisonDummyData
+import com.example.domain.jobseeker.model.JobRankingEntry
 import java.util.Locale
-import com.example.jobfusion.jobseeker.data.dummy.RankingComparisonDummyData
-import com.example.jobfusion.jobseeker.domain.model.JobRankingEntry
 import com.example.jobfusion.ui.theme.JobFusionTheme
 
 @Composable

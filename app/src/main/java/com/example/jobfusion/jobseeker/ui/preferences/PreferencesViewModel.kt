@@ -3,11 +3,11 @@ package com.example.jobfusion.jobseeker.ui.preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.jobfusion.core.network.NetworkResponse
-import com.example.jobfusion.jobseeker.domain.model.UpdatePreferencesRequest
-import com.example.jobfusion.jobseeker.domain.repository.PreferencesRepository
-import com.example.jobfusion.jobseeker.domain.usecase.GetJobSeekerPreferencesUseCase
-import com.example.jobfusion.jobseeker.domain.usecase.UpdateJobSeekerPreferencesUseCase
+import com.example.domain.auth.OutCome
+import com.example.domain.jobseeker.model.UpdatePreferencesRequest
+import com.example.domain.jobseeker.repository.PreferencesRepository
+import com.example.domain.jobseeker.usecase.GetJobSeekerPreferencesUseCase
+import com.example.domain.jobseeker.usecase.UpdateJobSeekerPreferencesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -48,8 +48,7 @@ class PreferencesViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, errorMessage = null) }
             when (val response = getPreferences()) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success -> {
+                is OutCome.Success -> {
                     val prefs = response.data
                     _uiState.update {
                         it.copy(
@@ -64,7 +63,7 @@ class PreferencesViewModel(
                         )
                     }
                 }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             isLoading = false,
@@ -88,12 +87,11 @@ class PreferencesViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isSaving = true, errorMessage = null, saveSuccessMessage = null) }
             when (val response = updatePreferences(request)) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success ->
+                is OutCome.Success ->
                     _uiState.update {
                         it.copy(isSaving = false, saveSuccessMessage = "Preferences saved")
                     }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             isSaving = false,

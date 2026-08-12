@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -55,12 +54,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.jobfusion.recruiter.data.dummy.RecruiterDashboardDummyData
-import com.example.jobfusion.recruiter.domain.model.CandidateRankingItem
-import com.example.jobfusion.recruiter.domain.model.RecruiterControls
-import com.example.jobfusion.recruiter.domain.model.RecruiterDashboardStats
+import com.example.domain.auth.repository.CandidateRankingItem
+import com.example.domain.auth.repository.RecruiterControls
+import com.example.domain.auth.repository.RecruiterDashboardStats
 import com.example.jobfusion.ui.theme.JobFusionTheme
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.data.dummy.RecruiterDashboardDummyData
 import java.util.Locale
 
 @Composable

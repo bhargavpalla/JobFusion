@@ -1,9 +1,10 @@
 package com.example.jobfusion.jobseeker.ui.preferences
 
-import com.example.jobfusion.core.network.RetrofitProvider
-import com.example.jobfusion.jobseeker.data.repository.FakePreferencesRepository
-import com.example.jobfusion.jobseeker.data.repository.RemotePreferencesRepository
-import com.example.jobfusion.jobseeker.domain.repository.PreferencesRepository
+import com.example.data.core.network.RetrofitProvider
+import com.example.data.jobseeker.repository.FakePreferencesRepository
+import com.example.data.jobseeker.repository.RemotePreferencesRepository
+import com.example.domain.jobseeker.repository.PreferencesRepository
+
 
 object PreferencesDependencies {
     private const val USE_REMOTE_SOURCE = false

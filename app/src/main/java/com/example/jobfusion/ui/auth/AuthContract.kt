@@ -1,20 +1,11 @@
 package com.example.jobfusion.ui.auth
 
-import com.example.jobfusion.domain.auth.model.Currency
-import com.example.jobfusion.domain.auth.model.SalaryPeriod
-import com.example.jobfusion.domain.auth.model.SalaryType
-import com.example.jobfusion.domain.auth.model.UserRole
+import com.example.domain.auth.model.Currency
+import com.example.domain.auth.model.SalaryPeriod
+import com.example.domain.auth.model.SalaryType
+import com.example.domain.auth.model.UserRole
+import com.example.domain.auth.validation.AuthField
 
-enum class AuthField {
-    FULL_NAME,
-    EMAIL,
-    PHONE,
-    PASSWORD,
-    RETYPE_PASSWORD,
-    MIN_SALARY,
-    MAX_SALARY,
-    EXPECTED_SALARY
-}
 
 data class AuthUiState(
     val isLoginMode: Boolean = true,

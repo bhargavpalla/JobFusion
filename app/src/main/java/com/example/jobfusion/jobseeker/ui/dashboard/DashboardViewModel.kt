@@ -3,9 +3,9 @@ package com.example.jobfusion.jobseeker.ui.dashboard
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.jobfusion.core.network.NetworkResponse
-import com.example.jobfusion.jobseeker.domain.model.FeedbackRequest
-import com.example.jobfusion.jobseeker.domain.repository.DashboardRepository
+import com.example.domain.auth.OutCome
+import com.example.domain.jobseeker.model.FeedbackRequest
+import com.example.domain.jobseeker.repository.DashboardRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -40,10 +40,9 @@ class DashboardViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(statsLoading = true, statsError = null) }
             when (val response = repository.getDashboardStats()) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success ->
+                is OutCome.Success ->
                     _uiState.update { it.copy(dashboardStats = response.data, statsLoading = false, statsError = null) }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             statsLoading = false,
@@ -55,8 +54,7 @@ class DashboardViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(recommendationsLoading = true, recommendationsError = null) }
             when (val response = repository.getRecommendations()) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success -> {
+                is OutCome.Success -> {
                     val jobs = response.data
                     _uiState.update { current ->
                         val ratings = jobs.associate { j ->
@@ -70,7 +68,7 @@ class DashboardViewModel(
                         )
                     }
                 }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             recommendationsLoading = false,
@@ -93,8 +91,7 @@ class DashboardViewModel(
                 )
             }
             when (val response = repository.uploadResume()) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success -> {
+                is OutCome.Success -> {
                     val upload = response.data
                     _uiState.update {
                         it.copy(
@@ -117,7 +114,7 @@ class DashboardViewModel(
                         )
                     }
                 }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             resumePhase = ResumeUploadPhase.Error,
@@ -133,13 +130,12 @@ class DashboardViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isMatchEngineBusy = true, transientBanner = null) }
             when (val statsResponse = repository.getDashboardStats()) {
-                is NetworkResponse.Success ->
+                is OutCome.Success ->
                     _uiState.update { it.copy(dashboardStats = statsResponse.data) }
-                is NetworkResponse.Loading, is NetworkResponse.Error -> Unit
+                is OutCome.Error -> Unit
             }
             when (val recResponse = repository.getRecommendations()) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success -> {
+                is OutCome.Success -> {
                     val jobs = recResponse.data
                     _uiState.update { current ->
                         val ratings = jobs.associate { j ->
@@ -153,7 +149,7 @@ class DashboardViewModel(
                         )
                     }
                 }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             isMatchEngineBusy = false,
@@ -203,15 +199,14 @@ class DashboardViewModel(
             }
             val request = FeedbackRequest(jobMatchId = jobId, rating = rating.toFloat())
             when (val feedbackResult = repository.submitFeedback(request)) {
-                is NetworkResponse.Loading -> Unit
-                is NetworkResponse.Success ->
+                is OutCome.Success ->
                     _uiState.update {
                         it.copy(
                             feedbackSubmittingJobId = null,
                             feedbackSubmittedIds = it.feedbackSubmittedIds + jobId
                         )
                     }
-                is NetworkResponse.Error ->
+                is OutCome.Error ->
                     _uiState.update {
                         it.copy(
                             feedbackSubmittingJobId = null,

@@ -1,12 +1,12 @@
 package com.example.jobfusion.ui.auth
 
 import android.content.Context
-import com.example.jobfusion.core.network.RetrofitProvider
-import com.example.jobfusion.data.auth.local.DataStoreAuthTokenRepository
-import com.example.jobfusion.data.auth.repository.FakeAuthRepository
-import com.example.jobfusion.data.auth.repository.RemoteAuthRepository
-import com.example.jobfusion.domain.auth.repository.AuthRepository
-import com.example.jobfusion.domain.auth.repository.AuthTokenRepository
+import com.example.data.auth.local.DataStoreAuthTokenRepository
+import com.example.data.auth.repository.FakeAuthRepository
+import com.example.data.auth.repository.RemoteAuthRepository
+import com.example.data.core.network.RetrofitProvider
+import com.example.domain.auth.repository.AuthRepository
+import com.example.domain.auth.repository.AuthTokenRepository
 
 object AuthDependencies {
     private const val USE_REMOTE_SOURCE = false

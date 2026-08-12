@@ -1,7 +1,8 @@
 package com.example.jobfusion.jobseeker.ui.dashboard
 
-import com.example.jobfusion.jobseeker.domain.model.DashboardStats
-import com.example.jobfusion.jobseeker.domain.model.JobMatch
+import com.example.domain.jobseeker.model.DashboardStats
+import com.example.domain.jobseeker.model.JobMatch
+
 
 enum class DashboardTab {
     JobMatches,

@@ -44,8 +44,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.jobfusion.jobseeker.domain.model.DashboardStats
-import com.example.jobfusion.jobseeker.domain.model.JobMatch
+import com.example.data.jobseeker.dummy.AiResumeInsightsDummyData
+import com.example.data.jobseeker.dummy.RankingComparisonDummyData
+import com.example.domain.jobseeker.model.DashboardStats
+import com.example.domain.jobseeker.model.JobMatch
 import com.example.jobfusion.jobseeker.ui.dashboard.components.DashboardCardBorder
 import com.example.jobfusion.jobseeker.ui.dashboard.components.DashboardMuted
 import com.example.jobfusion.jobseeker.ui.dashboard.components.DashboardNavy
@@ -57,8 +59,6 @@ import com.example.jobfusion.jobseeker.ui.dashboard.components.StatEstimateBg
 import com.example.jobfusion.jobseeker.ui.dashboard.components.StatMarketBg
 import com.example.jobfusion.jobseeker.ui.dashboard.components.StatRankedBg
 import com.example.jobfusion.jobseeker.ui.dashboard.components.StatTopMatchBg
-import com.example.jobfusion.jobseeker.data.dummy.AiResumeInsightsDummyData
-import com.example.jobfusion.jobseeker.data.dummy.RankingComparisonDummyData
 import com.example.jobfusion.jobseeker.ui.dashboard.components.AiResumeInsightsSection
 import com.example.jobfusion.jobseeker.ui.dashboard.components.RankingComparisonSection
 import com.example.jobfusion.jobseeker.ui.dashboard.components.UploadCard

@@ -1,8 +1,8 @@
 package com.example.jobfusion.recruiter.ui.dashboard
 
-import com.example.jobfusion.recruiter.domain.model.CandidateRankingItem
-import com.example.jobfusion.recruiter.domain.model.RecruiterControls
-import com.example.jobfusion.recruiter.domain.model.RecruiterDashboardStats
+import com.example.domain.auth.repository.CandidateRankingItem
+import com.example.domain.auth.repository.RecruiterControls
+import com.example.domain.auth.repository.RecruiterDashboardStats
 
 data class RecruiterDashboardUiState(
     val controls: RecruiterControls = RecruiterControls(),

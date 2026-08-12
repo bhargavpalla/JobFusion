@@ -33,10 +33,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.jobfusion.domain.auth.model.Currency
-import com.example.jobfusion.domain.auth.model.SalaryPeriod
-import com.example.jobfusion.domain.auth.model.SalaryType
-import com.example.jobfusion.domain.auth.model.UserRole
+import com.example.domain.auth.model.Currency
+import com.example.domain.auth.model.SalaryPeriod
+import com.example.domain.auth.model.SalaryType
+import com.example.domain.auth.model.UserRole
+import com.example.domain.auth.validation.AuthField
 import com.example.jobfusion.ui.auth.components.AuthDimens
 import com.example.jobfusion.ui.auth.components.DropdownField
 import com.example.jobfusion.ui.auth.components.FooterAction

@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "JobFusion"
 include(":app")
+include(":domain")
+include(":data")

@@ -37,12 +37,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jobfusion.jobseeker.data.dummy.AiResumeInsightsDummyData
-import com.example.jobfusion.jobseeker.domain.model.AiResumeInsights
-import com.example.jobfusion.jobseeker.domain.model.ImprovementScoreInsight
-import com.example.jobfusion.jobseeker.domain.model.MissingSkillsInsight
-import com.example.jobfusion.jobseeker.domain.model.StrongSectionsInsight
-import com.example.jobfusion.jobseeker.domain.model.SuggestedKeywordsInsight
+import com.example.data.jobseeker.dummy.AiResumeInsightsDummyData
+import com.example.domain.jobseeker.model.AiResumeInsights
+import com.example.domain.jobseeker.model.ImprovementScoreInsight
+import com.example.domain.jobseeker.model.MissingSkillsInsight
+import com.example.domain.jobseeker.model.StrongSectionsInsight
+import com.example.domain.jobseeker.model.SuggestedKeywordsInsight
 import com.example.jobfusion.ui.theme.JobFusionTheme
 
 private val InsightTitleColor = Color(0xFF0B1327)
